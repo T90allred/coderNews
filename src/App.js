@@ -53,6 +53,13 @@ class App extends Component {
       number: 4,
       bool: false
     };
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+  
+  onDismiss(id) {
+    const isNotId = item => item.objectID !== id;
+    const updatedList = this.state.list.filter(isNotId);
+    this.setState({ list: updatedList });
   }
 
   render() {
@@ -67,11 +74,15 @@ class App extends Component {
               <span>{item.author}</span>
               <span>{item.num_comments}</span>
               <span>{item.points}</span>
+              <span>
+                <button
+                  onClick={() => this.onDismiss(item.objectID)}
+                  type='button'>
+                  Dismiss
+                </button>
+              </span>
             </div>
         )}
-        <h2>{this.state.text}</h2>
-        <h2>{this.state.number}</h2>
-        <h2>{this.state.bool ? 'TRUE' : 'FALSE'}</h2>
       </div>
     );
   }
