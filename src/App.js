@@ -45,12 +45,21 @@ const list = [
 ];
 
 class App extends Component {
-  render() {
+  constructor(props){
+    super(props);
+    this.state = {
+      list,
+      text: 'TESTING',
+      number: 4,
+      bool: false
+    };
+  }
 
+  render() {
 
     return (
       <div className="App">
-        {list.map( item => 
+        {this.state.list.map( item => 
             <div key={item.objectID}>
               <span>
                 <a href={item.url}>{item.title}</a>
@@ -60,6 +69,9 @@ class App extends Component {
               <span>{item.points}</span>
             </div>
         )}
+        <h2>{this.state.text}</h2>
+        <h2>{this.state.number}</h2>
+        <h2>{this.state.bool ? 'TRUE' : 'FALSE'}</h2>
       </div>
     );
   }
