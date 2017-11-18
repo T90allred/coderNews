@@ -49,9 +49,6 @@ class App extends Component {
     super(props);
     this.state = {
       list,
-      text: 'TESTING',
-      number: 4,
-      bool: false
     };
     this.onDelete = this.onDelete.bind(this);
   }
